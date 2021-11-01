@@ -1,0 +1,3 @@
+[submodule "homer/public/assets/homer-icons"]
+	path = homer/public/assets/homer-icons
+	url = git@github.com:NX211/homer-icons.git

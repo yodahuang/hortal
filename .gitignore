@@ -1,0 +1,3 @@
+homer/public/assets/*
+!homer/public/assets/config.yml
+!homer/public/assets/homer-icons

@@ -1,0 +1,47 @@
+:80 {
+ reverse_proxy 127.0.0.1:1080
+}
+
+http://my.home {
+	reverse_proxy 192.168.4.54:1080
+}
+
+http://adguard.home {
+	reverse_proxy 127.0.0.1:1080
+}
+
+http://radarr.home {
+	reverse_proxy 192.168.4.54:7878
+}
+
+http://bazarr.home {
+	reverse_proxy 192.168.4.54:6767
+}
+
+http://sonarr.home {
+	reverse_proxy 192.168.4.54:8989
+}
+
+http://plex.home {
+	reverse_proxy 192.168.4.54:32400
+}
+
+http://ethernet-switch.home {
+	reverse_proxy 192.169.4.64
+}
+
+http://nas.home {
+	reverse_proxy 192.168.4.54:4200
+}
+
+http://sabnzbd.home {
+	reverse_proxy 192.168.4.54:8080
+}
+
+http://homebridge.home {
+	reverse_proxy 192.168.4.54:8581
+}
+
+http://stash.home {
+	reverse_proxy 192.168.4.54:9999
+}

@@ -1,0 +1,17 @@
+---
+version: "2"
+services:
+  homer:
+    image: b4bz/homer
+    #To build from source, comment previous line and uncomment below
+    #build: .
+    container_name: homer
+    volumes:
+      - ./public/assets:/www/assets
+    ports:
+      - 2080:8080
+    environment:
+      # For rootless Docker
+      - UID=0
+      - GID=0
+    restart: unless-stopped
