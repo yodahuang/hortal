@@ -1,9 +1,9 @@
 :80 {
- reverse_proxy 127.0.0.1:1080
+	reverse_proxy 127.0.0.1:1080
 }
 
 http://my.home {
-	reverse_proxy 192.168.4.54:1080
+	reverse_proxy 127.0.0.1:2080
 }
 
 http://adguard.home {
