@@ -42,6 +42,6 @@ http://homebridge.home {
 	reverse_proxy 192.168.4.54:8581
 }
 
-http://stash.home {
+http://power.home {
 	reverse_proxy 192.168.4.54:9999
 }
