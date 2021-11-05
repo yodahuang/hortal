@@ -1,0 +1,14 @@
+version: '2'
+services:
+  homebridge:
+    image: oznu/homebridge:ubuntu
+    network_mode: host
+    environment:
+      - PGID=0
+      - PUID=0
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
+      - TZ=America/Los_Angeles
+    volumes:
+      - ./config_and_plugins:/homebridge
+    restart: unless-stopped
