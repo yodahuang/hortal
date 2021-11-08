@@ -2,6 +2,7 @@ version: '2'
 services:
   homebridge:
     image: oznu/homebridge:ubuntu
+    container_name: homebridge
     network_mode: host
     environment:
       - PGID=0

@@ -102,6 +102,11 @@ services:
         subtitle: "TP-Link switch"
         tag: "network"
         url: "http://ethernet-switch.home"
+      - name: "Portainer"
+        logo: "assets/homer-icons/png/portainer.png"
+        subtitle: "Manage all the containers"
+        tag: "app"
+        url: "http://portainer.home"
   - name: "Misc"
     icon: "fas fa-dumpster"
     items:

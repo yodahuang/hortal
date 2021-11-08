@@ -1,0 +1,19 @@
+version: '3'
+services:
+  portainer:
+    image: portainer/portainer-ce
+    container_name: portainer
+    volumes:
+      # https://www.portainer.io/blog/portainer-and-rootless-docker
+      - /${XDG_RUNTIME_DIR}/docker.sock:/var/run/docker.sock
+      - ~/.local/share/docker/volumes:/var/lib/docker/volumes
+      - portainer_data:/data
+    ports:
+      - 8000:8000
+      - 9000:9000
+      # https port not used
+      # - 9443:9443
+    restart: unless-stopped
+
+volumes:
+  portainer_data:

@@ -45,3 +45,7 @@ http://homebridge.home {
 http://power.home {
 	reverse_proxy 192.168.4.54:9999
 }
+
+http://portainer.home {
+	reverse_proxy 127.0.0.1:9000
+}
