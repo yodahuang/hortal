@@ -38,3 +38,7 @@ sudo loginctl enable-linger "$(whoami)"
 # The architecture is not supported by official binary. So use the pip version.
 sudo apt install -y python3-pip libffi-dev
 sudo pip3 install docker-compose
+
+# TailScale
+curl -fsSL https://tailscale.com/install.sh | sh
+
