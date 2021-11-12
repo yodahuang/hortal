@@ -3,3 +3,4 @@ homer/public/assets/*
 !homer/public/assets/homer-icons
 
 homebridge/config_and_plugins
+code_server/config

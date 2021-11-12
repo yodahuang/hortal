@@ -1,0 +1,17 @@
+---
+version: "2.1"
+services:
+  code-server:
+    image: lscr.io/linuxserver/code-server
+    container_name: code-server
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=America/Los_Angeles
+      - PASSWORD=hunter2
+    volumes:
+      - ./config:/config
+      - ../:/hortal
+    ports:
+      - 1443:8443
+    restart: unless-stopped
