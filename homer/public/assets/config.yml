@@ -119,7 +119,7 @@ services:
         logo: "assets/homer-icons/png/code.png"
         subtitle: "Web based vscode in pi"
         tag: "app"
-        url: "http://vscode.home/?folder=/hortal"
+        url: "http://vscode.home/?folder=/playground"
   - name: "Misc"
     icon: "fas fa-dumpster"
     items:

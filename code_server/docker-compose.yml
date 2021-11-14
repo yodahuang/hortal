@@ -11,7 +11,7 @@ services:
       - PASSWORD=hunter2
     volumes:
       - ./config:/config
-      - ../:/hortal
+      - ../../:/playground
     ports:
       - 1443:8443
     restart: unless-stopped
