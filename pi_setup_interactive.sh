@@ -20,15 +20,12 @@ sudo apt install caddy
 curl -fsSL https://get.docker.com | sudo sh -s
 # Rootless Docker
 # https://docs.docker.com/engine/security/rootless/
-sudo sh -eux <<EOF
-# Install newuidmap & newgidmap binaries
-apt-get install -y uidmap
-EOF
+sudo apt install -y uidmap fuse-overlayfs slirp4netns
 # The following workaround suppose you are using a OS based on Debian 10 (Buster)
 # https://github.com/moby/moby/issues/42048
-wget https://github.com/rootless-containers/slirp4netns/releases/download/v1.1.12/slirp4netns-armv7l
-mv slirp4netns-armv7l ~/bin/slirp4netns && chmod +x ~/bin/slirp4netns
-dockerd-rootless-setuptool.sh install
+# wget https://github.com/rootless-containers/slirp4netns/releases/download/v1.1.12/slirp4netns-armv7l
+# mv slirp4netns-armv7l ~/bin/slirp4netns && chmod +x ~/bin/slirp4netns
+# dockerd-rootless-setuptool.sh install
 # Follow what's shown on screen to add that to ~/.bashrc
 # Enable docker daoemon on startup
 systemctl --user enable docker
@@ -43,7 +40,8 @@ sudo pip3 install docker-compose
 curl -fsSL https://tailscale.com/install.sh | sh
 
 # https://docs.linuxserver.io/faq#libseccomp
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
-echo "deb http://deb.debian.org/debian buster-backports main" | sudo tee -a /etc/apt/sources.list.d/buster-backports.list
-sudo apt update
-sudo apt install -t buster-backports libseccomp2
+# Only needed for buster
+# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
+# echo "deb http://deb.debian.org/debian buster-backports main" | sudo tee -a /etc/apt/sources.list.d/buster-backports.list
+# sudo apt update
+# sudo apt install -t buster-backports libseccomp2
