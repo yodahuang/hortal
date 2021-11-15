@@ -1,0 +1,36 @@
+version: "3"
+services:
+  dns:
+    container_name: dnsmasq
+    restart: unless-stopped
+    build:
+      context: .
+      dockerfile: dnsmasq.Dockerfile
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf
+    ports:
+      - 5253:5253/udp
+    cap_add:
+      - NET_ADMIN
+
+  # adguard-home: see the non rootless compose
+  caddy:
+    container_name: caddy
+    image: caddy
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      - PI=192.168.4.117
+      - SYNOLOGY=192.168.4.54
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  adguard_work_data:
+  caddy_data:
+    external: true
+  caddy_config:

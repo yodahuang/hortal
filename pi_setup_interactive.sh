@@ -1,47 +1,60 @@
 #!/usr/bin/env bash
 
-# Adguard Home
-# TODO: Use the docker version instead of this one that installs into /opt/AdGuardHome/
-# Dangerously piping shell script to shell. I have to confess I have not proofread the script.
-curl -s -S -L https://raw.githubusercontent.com/AdguardTeam/AdGuardHome/master/scripts/install.sh | sh -s -- -v
+# Note: the script is only tested on RaspberryPi OS based on bullseye.
 
-# Caddy
-# https://caddyserver.com/docs/install#debian-ubuntu-raspbian
-# Installing as a package instead of a Docker image makes testing much easier (as we get the cli),
-# and it comes with a systemd service.
-sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/caddy-stable.asc
-curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
-sudo apt update
-sudo apt install caddy
+# ======================================================== #
+# ===================== Common Utils ===================== #
+# ======================================================== #
 
-# Docker
-# Again, dangerous pipe.
+sudo apt install vim fzf
+
+echo -e "\n# Added for fzf" >> ~/.bashrc
+echo 'source /usr/share/doc/fzf/examples/key-bindings.bash' >> ~/.bashrc
+echo 'source /usr/share/doc/fzf/examples/completion.bash' >> ~/.bashrc
+
+python3 -m pip install --user pipx
+python3 -m pipx ensurepath
+echo 'eval "$(register-python-argcomplete pipx)"' >> ~/.bashrc
+
+# ======================================================== #
+# ======================== Docker ======================== #
+# ======================================================== #
+
+# Dangerous pipe.
 curl -fsSL https://get.docker.com | sudo sh -s
 # Rootless Docker
 # https://docs.docker.com/engine/security/rootless/
 sudo apt install -y uidmap fuse-overlayfs slirp4netns
-# The following workaround suppose you are using a OS based on Debian 10 (Buster)
-# https://github.com/moby/moby/issues/42048
-# wget https://github.com/rootless-containers/slirp4netns/releases/download/v1.1.12/slirp4netns-armv7l
-# mv slirp4netns-armv7l ~/bin/slirp4netns && chmod +x ~/bin/slirp4netns
-# dockerd-rootless-setuptool.sh install
+dockerd-rootless-setuptool.sh install
 # Follow what's shown on screen to add that to ~/.bashrc
-# Enable docker daoemon on startup
+# Note: I recently find that in some cases we need host network.
+# Thus, instead of setting env var, using `docker context use` is a better option.
+echo -e "\n# Added for rootless docker" >> ~/.bashrc
+echo 'export DOCKER_HOST=unix:///run/user/1000/docker.sock' >> ~/.bashrc 
+# Expose privileged ports.
+sudo setcap cap_net_bind_service=ep /usr/bin/rootlesskit
+
+# Enable docker daemon on startup
 systemctl --user enable docker
 sudo loginctl enable-linger "$(whoami)"
 
-# Docker Compose
-# The architecture is not supported by official binary. So use the pip version.
-sudo apt install -y python3-pip libffi-dev
-sudo pip3 install docker-compose
+# Now it's compose time
+sudo apt install -y libffi-dev
+pipx install docker-compose
 
-# TailScale
+# ======================================================== #
+# ========================== VPN ========================= #
+# ======================================================== #
+
 curl -fsSL https://tailscale.com/install.sh | sh
 
-# https://docs.linuxserver.io/faq#libseccomp
-# Only needed for buster
-# sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
-# echo "deb http://deb.debian.org/debian buster-backports main" | sudo tee -a /etc/apt/sources.list.d/buster-backports.list
-# sudo apt update
-# sudo apt install -t buster-backports libseccomp2
+# ======================================================== #
+# ======================== Secrets ======================= #
+# ======================================================== #
+
+pushd ~
+mkdir Softwares && cd Softwares
+git clone https://github.com/sobolevn/git-secret.git git-secret
+cd git-secret && make build
+PREFIX="/home/pi/.local" make install
+popd

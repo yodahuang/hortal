@@ -2,4 +2,4 @@
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
-sudo ln -s "$SCRIPT_DIR/Caddyfile" /etc/caddy/Caddyfile
+sudo ln -s "$SCRIPT_DIR/pre-commit" "$SCRIPT_DIR/../.git/hooks"

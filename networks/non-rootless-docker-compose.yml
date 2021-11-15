@@ -1,0 +1,20 @@
+version: "3"
+services:
+  adguard-home:
+    container_name: adguard-home
+    restart: unless-stopped
+    volumes:
+      - adguard_work_data:/opt/adguardhome/work
+      - ./adguard_conf:/opt/adguardhome/conf
+    # ports:
+    #   - "53:53/tcp"
+    #   - "53:53/udp"
+    #   - "1080:1080/tcp"
+    #   - "3000:3000/tcp"
+    # Use host network so it can see the correct client ip
+    network_mode: host
+    image: adguard/adguardhome
+
+volumes:
+  adguard_work_data:
+

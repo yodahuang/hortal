@@ -2,5 +2,9 @@ homer/public/assets/*
 !homer/public/assets/config.yml
 !homer/public/assets/homer-icons
 
-homebridge/config_and_plugins
+homebridge/config_and_plugins/*
 code_server/config
+networks/adguard_conf/AdGuardHome.yaml
+
+.gitsecret/keys/random_seed
+!*.secret

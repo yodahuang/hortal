@@ -1,0 +1,55 @@
+:80 {
+	reverse_proxy {$PI}:1080
+}
+
+http://my.home {
+	reverse_proxy {$PI}:2080
+}
+
+http://adguard.home {
+	reverse_proxy {$PI}:1080
+}
+
+http://radarr.home {
+	reverse_proxy {$SYNOLOGY}:7878
+}
+
+http://bazarr.home {
+	reverse_proxy {$SYNOLOGY}:6767
+}
+
+http://sonarr.home {
+	reverse_proxy {$SYNOLOGY}:8989
+}
+
+http://plex.home {
+	reverse_proxy {$SYNOLOGY}:32400
+}
+
+http://ethernet-switch.home {
+	reverse_proxy 192.169.4.64
+}
+
+http://nas.home {
+	reverse_proxy {$SYNOLOGY}:4200
+}
+
+http://sabnzbd.home {
+	reverse_proxy {$SYNOLOGY}:8080
+}
+
+http://homebridge.home {
+	reverse_proxy {$PI}:8581
+}
+
+http://power.home {
+	reverse_proxy {$SYNOLOGY}:9999
+}
+
+http://portainer.home {
+	reverse_proxy {$PI}:9000
+}
+
+http://vscode.home {
+	reverse_proxy {$PI}:1443
+}

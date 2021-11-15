@@ -1,0 +1,8 @@
+#!/bin/sh
+git secret changes | grep "+++"
+if [ $? -eq 0 ]; then
+    echo "Hiding git secretes."
+    git secret hide
+else
+    echo "No secrets to hide."
+fi
