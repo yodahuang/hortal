@@ -133,3 +133,8 @@ services:
         subtitle: "Download manager"
         tag: "app"
         url: "http://sabnzbd.home"
+      - name: "Notes"
+        icon: "fas fa-book"
+        subtitle: "Random notes"
+        tag: "app"
+        url: "http://notes.home"

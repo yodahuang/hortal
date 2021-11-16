@@ -53,3 +53,7 @@ http://portainer.home {
 http://vscode.home {
 	reverse_proxy {$PI}:1443
 }
+
+http://notes.home {
+	reverse_proxy {$PI}:2000
+}
