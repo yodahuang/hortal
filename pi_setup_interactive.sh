@@ -29,10 +29,16 @@ dockerd-rootless-setuptool.sh install
 # Follow what's shown on screen to add that to ~/.bashrc
 # Note: I recently find that in some cases we need host network.
 # Thus, instead of setting env var, using `docker context use` is a better option.
-echo -e "\n# Added for rootless docker" >> ~/.bashrc
-echo 'export DOCKER_HOST=unix:///run/user/1000/docker.sock' >> ~/.bashrc 
+
+# echo -e "\n# Added for rootless docker" >> ~/.bashrc
+# echo 'export DOCKER_HOST=unix:///run/user/1000/docker.sock' >> ~/.bashrc 
+
 # Expose privileged ports.
 sudo setcap cap_net_bind_service=ep /usr/bin/rootlesskit
+
+# Let user operate docker command without sudo
+sudo usermod -aG docker $USER
+newgrp docker
 
 # Enable docker daemon on startup
 systemctl --user enable docker
