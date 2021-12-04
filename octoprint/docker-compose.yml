@@ -1,0 +1,41 @@
+version: '2.4'
+
+services:
+  octoprint:
+    image: octoprint/octoprint
+    restart: unless-stopped
+    ports:
+      - 1080:80
+    devices:
+    # use `python -m serial.tools.miniterm` to see what the name is of the printer
+    - /dev/ttyAMA0:/dev/ttyAMA0
+    - /dev/video0:/dev/video0
+    - /dev/vchiq:/dev/vchiq
+    volumes:
+     - octoprint:/octoprint
+    # uncomment the lines below to ensure camera streaming is enabled when
+    # you add a video device
+    environment:
+     - ENABLE_MJPG_STREAMER=true
+  
+  ####
+  # uncomment if you wish to edit the configuration files of octoprint
+  # refer to docs on configuration editing for more information
+  ####
+
+  config-editor:
+   image: linuxserver/code-server
+   ports:
+     - 1443:8443
+   depends_on:
+     - octoprint
+   restart: unless-stopped
+   environment:
+     - PUID=0
+     - GUID=0
+     - TZ=America/Los_Angeles
+   volumes:
+     - octoprint:/octoprint
+
+volumes:
+  octoprint:

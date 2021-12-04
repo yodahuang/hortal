@@ -57,3 +57,7 @@ http://vscode.home {
 http://notes.home {
 	reverse_proxy {$PI}:2000
 }
+
+http://octoprint.home {
+	reverse_proxy {$OCTOPI}:1080
+}

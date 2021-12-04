@@ -8,43 +8,50 @@ logo: "logo.png"
 # icon: "fas fa-skull-crossbones" # Optional icon
 
 header: true
-footer: '<p>Created with <span class="has-text-danger">❤️</span> with <a href="https://bulma.io/">bulma</a>, <a href="https://vuejs.org/">vuejs</a> & <a href="https://fontawesome.com/">font awesome</a> // Fork me on <a href="https://github.com/bastienwirtz/homer"><i class="fab fa-github-alt"></i></a></p>' # set false if you want to hide it.
+footer: false
+
+stylesheet:
+  - "assets/homer-theme/assets/custom.css"
 
 # Optional theme customization
 theme: default
 colors:
   light:
-    highlight-primary: "#3367d6"
-    highlight-secondary: "#4285f4"
-    highlight-hover: "#5a95f5"
-    background: "#f5f5f5"
-    card-background: "#ffffff"
-    text: "#363636"
-    text-header: "#ffffff"
-    text-title: "#303030"
-    text-subtitle: "#424242"
-    card-shadow: rgba(0, 0, 0, 0.1)
-    link-hover: "#363636"
+    highlight-primary: "#fff5f2"
+    highlight-secondary: "#fff5f2"
+    highlight-hover: "#bebebe"
+    background: "#12152B"
+    card-background: "#fff5f2"
+    text: "#ffffff"
+    text-header: "#fafafa"
+    text-title: "#000000"
+    text-subtitle: "#111111"
+    card-shadow: rgba(0, 0, 0, 0.5)
+    link: "#3273dc"
+    link-hover: "#2e4053"
+    background-image: "../assets/homer-theme/assets/wallpaper-light.jpeg"
   dark:
-    highlight-primary: "#3367d6"
-    highlight-secondary: "#4285f4"
-    highlight-hover: "#5a95f5"
-    background: "#131313"
-    card-background: "#2b2b2b"
+    highlight-primary: "#181C3A"
+    highlight-secondary: "#181C3A"
+    highlight-hover: "#1F2347"
+    background: "#12152B"
+    card-background: "#181C3A"
     text: "#eaeaea"
-    text-header: "#ffffff"
+    text-header: "#7C71DD"
     text-title: "#fafafa"
-    text-subtitle: "#f5f5f5"
-    card-shadow: rgba(0, 0, 0, 0.4)
-    link-hover: "#ffdd57"
+    text-subtitle: "#8B8D9C"
+    card-shadow: rgba(0, 0, 0, 0.5)
+    link: "#c1c1c1"
+    link-hover: "#fafafa"
+    background-image: "../assets/homer-theme/assets/wallpaper.jpeg"
 
 # Optional message
-message:
-  #url: https://b4bz.io
-  style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
-  title: "Yay !"
-  icon: "fa fa-grin"
-  content: "This is so fun!"
+# message:
+#   #url: https://b4bz.io
+#   style: "is-dark" # See https://bulma.io/documentation/components/message/#colors for styling options.
+#   title: "Yay !"
+#   icon: "fa fa-grin"
+#   content: "This is so fun!"
 
 # Optional navbar
 # links: [] # Allows for navbar (dark mode, layout, and search) without any links
@@ -128,6 +135,11 @@ services:
         subtitle: "One NAS to host them all"
         tag: "app"
         url: "http://nas.home"
+      - name: "OctoPrint"
+        logo: "assets/homer-icons/png/octoprint.png"
+        subtitle: "Control 3D printer with ease"
+        tag: "app"
+        url: "http://octoprint.home"
       - name: "Sabnzbd"
         logo: "assets/homer-icons/png/sabnzbd.png"
         subtitle: "Download manager"

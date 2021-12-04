@@ -24,6 +24,7 @@ services:
     environment:
       - PI=192.168.4.117
       - SYNOLOGY=192.168.4.54
+      - OCTOPI=192.168.4.153
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
