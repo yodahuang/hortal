@@ -1,0 +1,11 @@
+version: '3'
+services:
+  portainer_agent:
+    image: portainer/agent
+    container_name: portainer_agent
+    volumes:
+      - /${XDG_RUNTIME_DIR}/docker.sock:/var/run/docker.sock
+      - ~/.local/share/docker/volumes:/var/lib/docker/volumes
+    ports:
+      - 9001:9001
+    restart: unless-stopped

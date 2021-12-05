@@ -64,3 +64,10 @@ git clone https://github.com/sobolevn/git-secret.git git-secret
 cd git-secret && make build
 PREFIX="/home/pi/.local" make install
 popd
+
+# ======================================================== #
+# ========================== git ========================= #
+# ======================================================== #
+
+git config --global user.email "realyanda@hey.com"
+git config --global user.name "Yanda Huang"
