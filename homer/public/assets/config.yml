@@ -99,6 +99,11 @@ services:
   - name: "Home management"
     icon: "fas fa-home"
     items:
+      - name: "Home Assistnat"
+        logo: "assets/homer-icons/png/home-assistant.png"
+        subtitle: "One place to store them all"
+        tag: "app"
+        url: "http://home-assistant.home"
       - name: "HomeBridge"
         logo: "assets/homer-icons/png/homebridge.png"
         subtitle: "Username and password are both admin"

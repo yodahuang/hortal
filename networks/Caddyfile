@@ -61,3 +61,7 @@ http://notes.home {
 http://octoprint.home {
 	reverse_proxy {$OCTOPI}:1080
 }
+
+http://home-assistant.home {
+	reverse_proxy {$OCTOPI}:8123
+}
