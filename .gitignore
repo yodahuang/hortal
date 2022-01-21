@@ -5,6 +5,7 @@ homer/public/assets/*
 homebridge/config_and_plugins/*
 code_server/config
 networks/adguard_conf/AdGuardHome.yaml
+radarr_and_friends/notifiarr.conf
 
 .gitsecret/keys/random_seed
 !*.secret

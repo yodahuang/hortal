@@ -7,48 +7,57 @@ x-env: &env
     - UMASK_SET=022
     - TZ=America/Los_Angeles
 services:
-    radarr:
-        image: ghcr.io/linuxserver/radarr
-        container_name: radarr
-        <<: *env
-        volumes:
-            - /volume1/docker/radarr-config:/config
-            - "/volume1/Movies/Foreign\ Movies:/movies"
-            - /volume1/Movies/sandbox:/downloads
-        ports:
-            - 7878:7878
-        restart: unless-stopped
-    sabnzbd:
-        image: ghcr.io/linuxserver/sabnzbd
-        container_name: sabnzbd
-        <<: *env
-        volumes:
-            - /volume1/docker/sabnzbd-config:/config
-            - /volume1/Movies/sandbox:/downloads
-            - /volume1/Movies/sandbox_incomplete:/incomplete-downloads
-        ports:
-            - 8080:8080
-            - 9090:9090
-        restart: unless-stopped
-    bazarr:
-        image: ghcr.io/linuxserver/bazarr
-        container_name: bazarr
-        <<: *env
-        volumes:
-            - /volume1/docker/bazarr-config:/config
-            - "/volume1/Movies/Foreign\ Movies:/movies"
-            - /volume1/Movies/tvseries:/tv
-        ports:
-            - 6767:6767
-        restart: unless-stopped
-    sonarr:
-        image: ghcr.io/linuxserver/sonarr
-        container_name: sonarr
-        <<: *env
-        volumes:
-        - /volume1/docker/sonarr-config:/config
-        - /volume1/Movies/tvseries:/tv
-        - /volume1/Movies/sandbox:/downloads
-        ports:
-        - 8989:8989
-        restart: unless-stopped
+  radarr:
+    image: ghcr.io/linuxserver/radarr
+    container_name: radarr
+    <<: *env
+    volumes:
+      - /volume1/docker/radarr-config:/config
+      - "/volume2/Movies/Foreign\ Movies:/movies"
+      - /volume2/Movies/sandbox:/downloads
+    ports:
+      - 7878:7878
+    restart: unless-stopped
+  sabnzbd:
+    image: ghcr.io/linuxserver/sabnzbd
+    container_name: sabnzbd
+    <<: *env
+    volumes:
+      - /volume1/docker/sabnzbd-config:/config
+      - /volume2/Movies/sandbox:/downloads
+      - /volume2/Movies/sandbox_incomplete:/incomplete-downloads
+    ports:
+      - 8080:8080
+      - 9090:9090
+    restart: unless-stopped
+  bazarr:
+    image: ghcr.io/linuxserver/bazarr
+    container_name: bazarr
+    <<: *env
+    volumes:
+      - /volume1/docker/bazarr-config:/config
+      - "/volume2/Movies/Foreign\ Movies:/movies"
+      - /volume2/Movies/tvseries:/tv
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+  sonarr:
+    image: ghcr.io/linuxserver/sonarr
+    container_name: sonarr
+    <<: *env
+    volumes:
+      - /volume1/docker/sonarr-config:/config
+      - /volume2/Movies/tvseries:/tv
+      - /volume2/Movies/sandbox:/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
+  notifiarr:
+    image: golift/notifiarr
+    container_name: notifiarr
+    volumes:
+      - ./notifiarr.conf:/config/notifiarr.conf
+    ports:
+      - 5454:5454
+    hostname: Dumpster
+    restart: unless-stopped
