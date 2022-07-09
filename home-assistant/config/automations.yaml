@@ -1,0 +1,63 @@
+- id: '1651986903671'
+  alias: Shield plays
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 6d98e6adfc4cc8c5f9e599b4b0e064e6
+    domain: media_player
+    entity_id: media_player.android_tv_192_168_4_149
+    type: playing
+  condition:
+  - condition: time
+    before: 00:00:00
+    after: '17:00:00'
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.theatre
+    metadata: {}
+  mode: single
+- id: '1651987088409'
+  alias: Finished a movie
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 6d98e6adfc4cc8c5f9e599b4b0e064e6
+    domain: media_player
+    entity_id: media_player.android_tv_192_168_4_149
+    type: paused
+    for:
+      hours: 0
+      minutes: 0
+      seconds: 10
+  condition: []
+  action:
+  - service: light.turn_on
+    data:
+      transition: 6
+    target:
+      area_id: the_room
+  - device_id: a73d0b8e8e0738ab9debbafa8c2bac30
+    domain: light
+    entity_id: light.mark
+    type: brightness_increase
+  mode: single
+- id: '1652578617100'
+  alias: Cube Magic
+  description: ''
+  use_blueprint:
+    path: bergstrom/mi-magic-cube-deconz-45-actions.yaml
+    input:
+      cube_shake:
+      - service: light.turn_on
+        data:
+          transition: 2
+          brightness_pct: 100
+        target:
+          area_id: the_room
+      cube_fall:
+      - service: light.turn_off
+        data: {}
+        target:
+          area_id: the_room
+      remote: 6b2c54aca874c1ae5d7198827f1e45e6

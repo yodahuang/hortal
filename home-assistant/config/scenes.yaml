@@ -1,0 +1,163 @@
+- id: '1651986756840'
+  name: Theatre
+  entities:
+    light.mark:
+      min_mireds: 111
+      max_mireds: 666
+      effect_list:
+      - effect_colorloop
+      - effect_pulse
+      - effect_stop
+      supported_color_modes:
+      - color_temp
+      - hs
+      color_mode: hs
+      brightness: 26
+      hs_color:
+      - 19.688
+      - 30.558
+      rgb_color:
+      - 255
+      - 202
+      - 177
+      xy_color:
+      - 0.413
+      - 0.349
+      friendly_name: Mark
+      supported_features: 36
+      state: 'on'
+    light.lisa:
+      supported_color_modes:
+      - brightness
+      color_mode: brightness
+      brightness: 76
+      mode: normal
+      dynamics: none
+      friendly_name: Lisa
+      supported_features: 40
+      state: 'on'
+    light.johnny:
+      min_mireds: 153
+      max_mireds: 500
+      supported_color_modes:
+      - color_temp
+      - xy
+      color_mode: color_temp
+      brightness: 76
+      color_temp: 366
+      hs_color:
+      - 28.327
+      - 64.71
+      rgb_color:
+      - 255
+      - 167
+      - 89
+      xy_color:
+      - 0.524
+      - 0.387
+      mode: normal
+      dynamics: none
+      friendly_name: Johnny
+      supported_features: 40
+      state: 'on'
+    light.smart_switch_2103039961677551854648e1e94fd4ca_dndmode:
+      supported_color_modes:
+      - onoff
+      device_class: DNDMode
+      friendly_name: Aragon controller - DNDMode
+      supported_features: 0
+      state: 'off'
+    switch.smart_switch_2103039961677551854648e1e94fd4ca_outlet:
+      device_class: outlet
+      friendly_name: Aragon
+      state: 'off'
+    light.aragon:
+      supported_color_modes:
+      - onoff
+      friendly_name: Aragon
+      supported_features: 0
+      state: 'off'
+    switch.smart_switch_2103309141361255853848e1e968ffe1_outlet:
+      device_class: outlet
+      friendly_name: Mo
+      state: 'off'
+    light.mo:
+      supported_color_modes:
+      - onoff
+      friendly_name: Mo
+      supported_features: 0
+      state: 'off'
+    switch.frodo_switch:
+      icon: mdi:cursor-pointer
+      friendly_name: Frodo Switch
+      state: 'on'
+    number.frodo_move_down:
+      min: 51
+      max: 100
+      step: 1
+      mode: auto
+      unit_of_measurement: ''
+      icon: mdi:arrow-down-bold
+      friendly_name: Frodo Move Down %
+      state: '85.0'
+    number.frodo_move_up:
+      min: 0
+      max: 50
+      step: 1
+      mode: auto
+      icon: mdi:arrow-up-bold
+      friendly_name: Frodo Move Up %
+      state: unknown
+    number.frodo_down_delay:
+      min: 0
+      max: 10
+      step: 1
+      mode: auto
+      unit_of_measurement: s
+      icon: mdi:timer
+      friendly_name: Frodo Down Delay
+      state: '6.0'
+    select.frodo_mode:
+      options:
+      - click
+      - switch
+      device_class: tuya__fingerbot_mode
+      friendly_name: Frodo Mode
+      state: click
+    light.frodo_switch:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Frodo Switch
+      supported_features: 0
+      state: 'on'
+  icon: mdi:movie
+  metadata:
+    light.mark:
+      entity_only: false
+    light.johnny:
+      entity_only: false
+    light.lisa:
+      entity_only: false
+    switch.frodo_switch:
+      entity_only: false
+    number.frodo_move_down:
+      entity_only: false
+    number.frodo_move_up:
+      entity_only: false
+    number.frodo_down_delay:
+      entity_only: false
+    select.frodo_mode:
+      entity_only: false
+    light.smart_switch_2103039961677551854648e1e94fd4ca_dndmode:
+      entity_only: false
+    switch.smart_switch_2103039961677551854648e1e94fd4ca_outlet:
+      entity_only: false
+    light.aragon:
+      entity_only: false
+    switch.smart_switch_2103309141361255853848e1e968ffe1_outlet:
+      entity_only: false
+    light.mo:
+      entity_only: false
+    light.frodo_switch:
+      entity_only: false
