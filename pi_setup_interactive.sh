@@ -6,6 +6,7 @@
 # ===================== Common Utils ===================== #
 # ======================================================== #
 
+sudo apt update
 sudo apt install vim fzf
 
 echo -e "\n# Added for fzf" >> ~/.bashrc
@@ -45,7 +46,8 @@ systemctl --user enable docker
 sudo loginctl enable-linger "$(whoami)"
 
 # Now it's compose time
-sudo apt install -y libffi-dev
+# Use the new Docker compose cli plugin
+sudo apt install docker-compose-plugin
 pipx install docker-compose
 
 # ======================================================== #
@@ -71,3 +73,5 @@ popd
 
 git config --global user.email "realyanda@hey.com"
 git config --global user.name "Yanda Huang"
+git config --global pull.ff only
+git config --global alias.st status
