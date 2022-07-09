@@ -1,3 +1,7 @@
+{
+	auto_https off
+}
+
 :80 {
 	reverse_proxy {$PI}:1080
 }
@@ -64,4 +68,16 @@ http://octoprint.home {
 
 http://home-assistant.home {
 	reverse_proxy {$OCTOPI}:8123
+}
+
+http://calibre.home {
+	reverse_proxy {$SYNOLOGY}:18080
+}
+
+http://readarr.home {
+	reverse_proxy {$SYNOLOGY}:8787
+}
+
+http://phoscon.home {
+	reverse_proxy {$PI}:8080
 }

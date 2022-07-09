@@ -9,3 +9,6 @@ radarr_and_friends/notifiarr.conf
 
 .gitsecret/keys/random_seed
 !*.secret
+
+radarr_and_friends/calibre-data
+radarr_and_friends/readarr-data

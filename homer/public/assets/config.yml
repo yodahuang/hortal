@@ -109,6 +109,10 @@ services:
         subtitle: "Username and password are both admin"
         tag: "app"
         url: "http://homebridge.home"
+      - name: "Phoscon (deCONZ)"
+        logo: "assets/icons/phoscon.svg"
+        subtitle: "All Zigbee stuff"
+        url: "http://phoscon.home"
       - name: "AdGuard Home"
         logo: "assets/homer-icons/png/adguardhome.png"
         subtitle: "Block ads and trackings"
@@ -119,6 +123,19 @@ services:
         subtitle: "TP-Link switch"
         tag: "network"
         url: "http://ethernet-switch.home"
+  - name: Books
+    icon: "fas fa-book"
+    items:
+      - name: "Calibre"
+        logo: "assets/homer-icons/png/calibreweb.png"
+        subtitle: "Manage books"
+        tag: "app"
+        url: "http://calibre.home"
+      - name: "Readarr"
+        logo: "assets/homer-icons/png/readarr.png"
+        subtitle: "Get more books"
+        tag: "app"
+        url: "http://readarr.home"
   - name: Admin
     icon: "fas fa-user-cog"
     items:

@@ -13,8 +13,7 @@ services:
     <<: *env
     volumes:
       - /volume1/docker/radarr-config:/config
-      - "/volume2/Movies/Foreign\ Movies:/movies"
-      - /volume2/Movies/sandbox:/downloads
+      - /volume2/data:/data
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -23,9 +22,8 @@ services:
     container_name: sabnzbd
     <<: *env
     volumes:
+      - /volume2/data/usenet:/data/usenet
       - /volume1/docker/sabnzbd-config:/config
-      - /volume2/Movies/sandbox:/downloads
-      - /volume2/Movies/sandbox_incomplete:/incomplete-downloads
     ports:
       - 8080:8080
       - 9090:9090
@@ -36,8 +34,7 @@ services:
     <<: *env
     volumes:
       - /volume1/docker/bazarr-config:/config
-      - "/volume2/Movies/Foreign\ Movies:/movies"
-      - /volume2/Movies/tvseries:/tv
+      - /volume2/data:/data
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -47,8 +44,7 @@ services:
     <<: *env
     volumes:
       - /volume1/docker/sonarr-config:/config
-      - /volume2/Movies/tvseries:/tv
-      - /volume2/Movies/sandbox:/downloads
+      - /volume2/data:/data
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -60,4 +56,24 @@ services:
     ports:
       - 5454:5454
     hostname: Dumpster
+    restart: unless-stopped
+  calibre:
+    image: lscr.io/linuxserver/calibre
+    container_name: calibre
+    <<: *env
+    volumes:
+      - ./calibre-data:/config
+    ports:
+      - 18080:8080
+      - 18081:8081
+    restart: unless-stopped
+  readarr:
+    image: ghcr.io/linuxserver/readarr:nightly
+    container_name: readarr
+    <<: *env
+    volumes:
+      - ./readarr-data:/config
+      - /volume2/data:/data
+    ports:
+      - 8787:8787
     restart: unless-stopped
