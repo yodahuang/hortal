@@ -79,5 +79,5 @@ http://readarr.home {
 }
 
 http://phoscon.home {
-	reverse_proxy {$PI}:8080
+	reverse_proxy {$PI}:3080
 }
