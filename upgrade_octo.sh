@@ -8,9 +8,9 @@ sudo apt upgrade -y
 
 # Docker compose stuff
 
-docker context use rootless
+docker context use default
 
-stacks=(home-assistant octoprint)
+stacks=(home-assistant octoprint portainer-agent)
 
 for stack in "${stacks[@]}"; do
     pushd "$stack"
@@ -19,10 +19,3 @@ for stack in "${stacks[@]}"; do
     popd
 done
 
-stacks=(portainer-agent)
-for stack in "${stacks[@]}"; do
-    pushd "$stack"
-    docker compose -f docker-compose-rootless.yml pull
-    docker compose -f docker-compose-rootless.yml up -d
-    popd
-done
