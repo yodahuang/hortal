@@ -1,3 +1,5 @@
+
+
 version: '2.4'
 
 services:
@@ -8,15 +10,15 @@ services:
       - 1080:80
     devices:
     # use `python -m serial.tools.miniterm` to see what the name is of the printer
-    - /dev/ttyAMA0:/dev/ttyAMA0
+    - /dev/ttyACM0:/dev/ttyACM0
     - /dev/video0:/dev/video0
-    - /dev/vchiq:/dev/vchiq
     volumes:
      - octoprint:/octoprint
     # uncomment the lines below to ensure camera streaming is enabled when
     # you add a video device
     environment:
      - ENABLE_MJPG_STREAMER=true
+     - CAMERA_DEV=/dev/video0
   
   ####
   # uncomment if you wish to edit the configuration files of octoprint

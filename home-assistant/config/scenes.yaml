@@ -90,13 +90,12 @@
     switch.frodo_switch:
       icon: mdi:cursor-pointer
       friendly_name: Frodo Switch
-      state: 'on'
+      state: 'off'
     number.frodo_move_down:
       min: 51
       max: 100
       step: 1
       mode: auto
-      unit_of_measurement: ''
       icon: mdi:arrow-down-bold
       friendly_name: Frodo Move Down %
       state: '85.0'
@@ -113,10 +112,9 @@
       max: 10
       step: 1
       mode: auto
-      unit_of_measurement: s
       icon: mdi:timer
       friendly_name: Frodo Down Delay
-      state: '6.0'
+      state: '4.0'
     select.frodo_mode:
       options:
       - click
@@ -127,37 +125,8 @@
     light.frodo_switch:
       supported_color_modes:
       - onoff
-      color_mode: onoff
       friendly_name: Frodo Switch
       supported_features: 0
-      state: 'on'
+      state: 'off'
   icon: mdi:movie
-  metadata:
-    light.mark:
-      entity_only: false
-    light.johnny:
-      entity_only: false
-    light.lisa:
-      entity_only: false
-    switch.frodo_switch:
-      entity_only: false
-    number.frodo_move_down:
-      entity_only: false
-    number.frodo_move_up:
-      entity_only: false
-    number.frodo_down_delay:
-      entity_only: false
-    select.frodo_mode:
-      entity_only: false
-    light.smart_switch_2103039961677551854648e1e94fd4ca_dndmode:
-      entity_only: false
-    switch.smart_switch_2103039961677551854648e1e94fd4ca_outlet:
-      entity_only: false
-    light.aragon:
-      entity_only: false
-    switch.smart_switch_2103309141361255853848e1e968ffe1_outlet:
-      entity_only: false
-    light.mo:
-      entity_only: false
-    light.frodo_switch:
-      entity_only: false
+  metadata: {}

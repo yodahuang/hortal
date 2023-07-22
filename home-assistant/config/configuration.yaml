@@ -17,3 +17,25 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 frontend:
   themes: !include_dir_merge_named themes
+
+    
+light:
+  - platform: template
+    lights:
+      real_frodo:
+        friendly_name: "Real Frodo"
+        unique_id: "frodo_in_the_room"
+        turn_on:
+          - service: remote.send_command
+            data:
+              command: power
+              device: frodo
+            target:
+              entity_id: remote.saint_remote_remote
+        turn_off:
+          - service: remote.send_command
+            data:
+              command: power
+              device: frodo
+            target:
+              entity_id: remote.saint_remote_remote

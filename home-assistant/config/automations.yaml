@@ -30,6 +30,11 @@
       hours: 0
       minutes: 0
       seconds: 10
+  - platform: device
+    device_id: 6d98e6adfc4cc8c5f9e599b4b0e064e6
+    domain: media_player
+    entity_id: media_player.android_tv_192_168_4_149
+    type: idle
   condition: []
   action:
   - service: light.turn_on
@@ -61,3 +66,52 @@
         target:
           area_id: the_room
       remote: 6b2c54aca874c1ae5d7198827f1e45e6
+- id: '1657605588563'
+  alias: Printing light
+  description: ''
+  trigger:
+  - type: turned_on
+    platform: device
+    device_id: 4cbc089f4071642cb91cbe897d3090e5
+    entity_id: binary_sensor.octoprint_printing
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 6335bbce15f49b610cbcb4e774548f25
+    entity_id: light.lighthouse
+    domain: light
+  mode: single
+- id: '1657605654438'
+  alias: Printing dark
+  description: ''
+  trigger:
+  - type: turned_off
+    platform: device
+    device_id: 4cbc089f4071642cb91cbe897d3090e5
+    entity_id: binary_sensor.octoprint_printing
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 6335bbce15f49b610cbcb4e774548f25
+    entity_id: light.lighthouse
+    domain: light
+  mode: single
+- id: '1660970236623'
+  alias: Printex
+  description: ''
+  trigger:
+  - type: turned_off
+    platform: device
+    device_id: 4cbc089f4071642cb91cbe897d3090e5
+    entity_id: binary_sensor.octoprint_printing
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.home_assistant
+    data:
+      message: Yay! The print job finishes!  @everyone
+      target:
+      - '1010407069024800869'
+  mode: single
